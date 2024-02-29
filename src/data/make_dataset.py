@@ -1,30 +1,60 @@
-# -*- coding: utf-8 -*-
-import click
-import logging
-from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
+# data preproecessing
 
+import pandas as pd
+import numpy as np
+import pathlib
+import sys
 
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+def load_data(data_path):
+    df = pd.read_csv(data_path)
+    return df
 
+def data_preprocessing(df, label = sys.argv[2]):
+    # drop row with NA value
+    if label == 'train.csv':
+        # Drop  'pickup_datetime' and 'dropoff_datetime' column form DataFrame as it converted to individual feature 
+        df.drop(['id','vendor_id', 'dropoff_datetime'], axis=1,
+                inplace=True)
+    else:
+        # Drop  'pickup_datetime' and 'dropoff_datetime' column form DataFrame as it converted to individual feature 
+        df.drop(['id','vendor_id'], axis=1,
+                inplace=True)
+    df.dropna(inplace=True)
+    # convert datetime object to 'Datetime' format
+    df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime']) 
+    # extract the day, month, and year components (for pickup)
+    df['pickup_day'] = df['pickup_datetime'].dt.day
+    df['pickup_month'] = df['pickup_datetime'].dt.month
+    df['pickup_year'] = df['pickup_datetime'].dt.year
+    df['pickup_Hour'] = df['pickup_datetime'].dt.hour
+    df['pickup_Minute'] = df['pickup_datetime'].dt.minute
+    df['pickup_Second'] = df['pickup_datetime'].dt.second
 
-if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    # Drop  'pickup_datetime' and 'dropoff_datetime' column form DataFrame as it converted to individual feature 
+    df.drop(['pickup_datetime'], axis=1,
+            inplace=True)
+    # replace on  col   'store_and_fwd_flag'
+    df['store_and_fwd_flag'] = df['store_and_fwd_flag'].replace({'N':0, 'Y':1})
+    return df
 
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
+def save_data(df, output_path, file_name='/train.csv'):
+    # save the preprocessed data in specified output path
+    pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
+    df.to_csv(output_path+file_name, index=False)
 
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
+def main():
+    curr_dir = pathlib.Path(__file__)
+    home_dir = curr_dir.parent.parent.parent
+    input_file = sys.argv[1]
+    data_path = home_dir.as_posix() + input_file
+    output_path = home_dir.as_posix() + '/data/processed'
+    
+    data = load_data(data_path)
+    pro_data = data_preprocessing(data)
+    save_data(pro_data, output_path, sys.argv[2])
 
+    ## run file using command
+    # python <py file name> <write i/p file path +name> <mention output file name>
+
+if __name__ == "__main__":
     main()
