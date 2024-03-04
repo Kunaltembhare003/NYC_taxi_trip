@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  train_preprocess:
+    cmd: python src/data/make_dataset.py /data/raw/train.csv /train.csv
+    deps:
+    - path: ./data/raw/train.csv
+      hash: md5
+      md5: ed181ffaeff00e9a930b5c5a437fcb76
+      size: 15466496
+    - path: ./src/data/make_dataset.py
+      hash: md5
+      md5: 5ee8d379b42d24336b2ffbd2fa8cb3d7
+      size: 2286
+  test_preprocess:
+    cmd: python src/data/make_dataset.py /data/raw/test.csv /test.csv
+    deps:
+    - path: ./data/raw/test.csv
+      hash: md5
+      md5: 790576653c42ae3e4a1170935796e93c
+      size: 18350080
+    - path: ./src/data/make_dataset.py
+      hash: md5
+      md5: 5ee8d379b42d24336b2ffbd2fa8cb3d7
+      size: 2286

@@ -1,0 +1,14 @@
+stages:
+  train_preprocess:
+    cmd: python src/data/make_dataset.py /data/raw/train.csv /train.csv
+    deps:
+      - ./src/data/make_dataset.py
+      - ./data/raw/train.csv
+
+  test_preprocess:
+    cmd: python src/data/make_dataset.py /data/raw/test.csv /test.csv
+    deps:
+      - ./src/data/make_dataset.py
+      - ./data/raw/test.csv
+
+  
