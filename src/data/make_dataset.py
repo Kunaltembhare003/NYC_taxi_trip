@@ -47,7 +47,7 @@ def main():
     home_dir = curr_dir.parent.parent.parent
     input_file = sys.argv[1]
     data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + '/data/processed'
+    output_path = home_dir.as_posix() + '/data/processed/'
     
     data = load_data(data_path)
     pro_data = data_preprocessing(data)
