@@ -5,8 +5,8 @@ stages:
     deps:
     - path: ./data/raw/train.csv
       hash: md5
-      md5: e59c291a4b1c640f1dab33b89daa22e1
-      size: 200589097
+      md5: ed181ffaeff00e9a930b5c5a437fcb76
+      size: 15466496
     - path: ./src/data/make_dataset.py
       hash: md5
       md5: 29fb263c2ab60227b02607a11cff569e
@@ -16,9 +16,50 @@ stages:
     deps:
     - path: ./data/raw/test.csv
       hash: md5
-      md5: 0686e4fc98617485dba9fdbabbf1c48d
-      size: 70794289
+      md5: 790576653c42ae3e4a1170935796e93c
+      size: 18350080
     - path: ./src/data/make_dataset.py
       hash: md5
       md5: 29fb263c2ab60227b02607a11cff569e
       size: 2287
+  train_model:
+    cmd: python src/models/train_model.py /data/processed/train.csv
+    deps:
+    - path: ./data/processed/train.csv
+      hash: md5
+      md5: cea71a13d43eef0226b9e511b1f111fd
+      size: 11489819
+    - path: ./src/models/train_model.py
+      hash: md5
+      md5: c1295229b7e575f356a10577fa581212
+      size: 3007
+    params:
+      params.yaml:
+        train_model.max_depth:
+          type: choice
+          options:
+          - 2
+          - 5
+          - 6
+          - 8
+        train_model.n_estimators:
+          type: choice
+          options:
+          - 1
+          - 5
+          - 10
+          - 15
+          - 20
+          - 25
+          - 50
+        train_model.random_state:
+          type: choice
+          options:
+          - 3
+          - 42
+    outs:
+    - path: ./models/
+      hash: md5
+      md5: 1ba1192cc764323c9a5ba931712ece80.dir
+      size: 56305
+      nfiles: 1
