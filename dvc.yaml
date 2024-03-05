@@ -11,4 +11,16 @@ stages:
       - ./src/data/make_dataset.py
       - ./data/raw/test.csv
 
+  train_model:
+    cmd: python src/models/train_model.py /data/processed/train.csv 
+    deps:
+      - ./src/models/train_model.py
+      - ./data/processed/train.csv
+    params:
+      - train_model.n_estimators
+      - train_model.max_depth
+      - train_model.random_state
+    outs:
+    - .\models\
+
   

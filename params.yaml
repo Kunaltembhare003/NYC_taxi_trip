@@ -1,0 +1,10 @@
+train_model:
+  n_estimators:
+    type: choice
+    options: [1, 5, 10, 15, 20, 25, 50]
+  max_depth:
+    type: choice
+    options: [2, 5, 6, 8]
+  random_state:
+    type: choice
+    options: [3, 42]
