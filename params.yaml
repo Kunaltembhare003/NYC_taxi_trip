@@ -8,3 +8,4 @@ train_model:
   random_state:
     type: choice
     options: [3, 42]
+  max_eval: 10
