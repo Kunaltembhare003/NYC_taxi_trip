@@ -21,6 +21,6 @@ stages:
       - train_model.max_depth
       - train_model.random_state
     outs:
-    - .\models\
+    - ./models/
 
   
