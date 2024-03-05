@@ -22,5 +22,12 @@ stages:
       - train_model.random_state
     outs:
     - ./models/
+  visualize:
+    cmd: python src/visualization/visualize.py /models/model.joblib /data/processed/train.csv
+    deps:
+      - ./src/visualization/visualize.py
+      - ./models/model.joblib
+    outs:
+      - ./mlflow
 
   

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/2aaca381b74e4d18b39f2bb547ed4844/artifacts
+end_time: 1709631694372
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2aaca381b74e4d18b39f2bb547ed4844
+run_name: bald-lynx-803
+run_uuid: 2aaca381b74e4d18b39f2bb547ed4844
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709631694187
+status: 3
+tags: []
+user_id: codespace

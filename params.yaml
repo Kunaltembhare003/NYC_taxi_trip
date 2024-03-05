@@ -8,4 +8,8 @@ train_model:
   random_state:
     type: choice
     options: [3, 42]
-  max_eval: 10
+  max_evals: 10
+
+visualize:
+  split: 0.2
+  seed: 42

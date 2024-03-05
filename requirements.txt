@@ -16,3 +16,4 @@ dvc
 dvclive
 hyperopt
 scikit-learn
+mlflow

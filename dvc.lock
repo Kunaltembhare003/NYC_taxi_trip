@@ -63,3 +63,20 @@ stages:
       md5: 1ba1192cc764323c9a5ba931712ece80.dir
       size: 56305
       nfiles: 1
+  visualize:
+    cmd: python src/visualization/visualize.py /models/model.joblib /data/processed/train.csv
+    deps:
+    - path: ./models/model.joblib
+      hash: md5
+      md5: b92badaf5ea2f93e62d2678d4815556b
+      size: 56305
+    - path: ./src/visualization/visualize.py
+      hash: md5
+      md5: f8fae2ab30a6b754f6fa1be24ce69e5d
+      size: 6856
+    outs:
+    - path: ./mlflow
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0

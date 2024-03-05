@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/fda9d9476f0f41368b608d8954f435fc/artifacts
+end_time: 1709633526217
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fda9d9476f0f41368b608d8954f435fc
+run_name: skittish-hare-376
+run_uuid: fda9d9476f0f41368b608d8954f435fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709633526102
+status: 3
+tags: []
+user_id: codespace

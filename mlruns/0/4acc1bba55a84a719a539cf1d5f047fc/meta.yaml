@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/4acc1bba55a84a719a539cf1d5f047fc/artifacts
+end_time: 1709634293630
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4acc1bba55a84a719a539cf1d5f047fc
+run_name: enthused-shoat-808
+run_uuid: 4acc1bba55a84a719a539cf1d5f047fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709634293491
+status: 3
+tags: []
+user_id: codespace
