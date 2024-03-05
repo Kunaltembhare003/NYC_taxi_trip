@@ -16,7 +16,7 @@ def load_train_data(data):
     return X_train, y_train
 
 # Define the objective function
-def objective(param):
+def objective(X_train, y_train,param):
     # RandomForestRegressor parameters
     # Create a RandomForestRegressor model with the given parameters
     rf = RandomForestRegressor(**param)
@@ -51,7 +51,7 @@ def main():
     params = yaml.safe_load(open(params_file))["train_model"]
 
     input_file_train = sys.argv[1]
-    X_train, y_train = load_train_data(input_file_train)
+    X_train, y_train = load_train_data(home_dir.as_posix()+input_file_train)
     output_path = home_dir.as_posix() + '/models'
     pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
 
@@ -64,10 +64,10 @@ def main():
 
     # Run the optimization
     trials = Trials()
-    best = fmin(fn=objective,
+    best = fmin(fn=lambda param: objective(X_train, y_train, param),
                 space=search_space,
                 algo=tpe.suggest,
-                max_evals=10,
+                max_evals=params['max_evals'],
                 trials=trials)
     
     # Convert indices to hyperparameter values
