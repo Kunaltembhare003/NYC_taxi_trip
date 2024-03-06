@@ -17,3 +17,5 @@ dvclive
 hyperopt
 scikit-learn
 mlflow
+pydantic
+fastapi[all]
