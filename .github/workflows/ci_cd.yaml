@@ -30,7 +30,7 @@ jobs:
 
       - name: Run pipeline
         run: |
-          dvc exp run
+          python app.py
 
       - name: Generate MLflow Parameter csv
         run: |
