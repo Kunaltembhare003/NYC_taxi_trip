@@ -108,7 +108,6 @@ def main():
         evaluate(model, X_train, y_train, "train")
         evaluate(model, X_test, y_test, "test")
 
-
 if __name__ == "__main__":
     main()
 

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/a5f4897b39ab48e481183d1baa3df93a/artifacts
+end_time: 1710064045645
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a5f4897b39ab48e481183d1baa3df93a
+run_name: indecisive-robin-278
+run_uuid: a5f4897b39ab48e481183d1baa3df93a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710064045471
+status: 3
+tags: []
+user_id: codespace
